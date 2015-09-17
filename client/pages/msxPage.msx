@@ -7,7 +7,10 @@ myApp.msxPage = {
   },
   view: function(ctrl) {
     return myApp.layout(
-      <h1>MSX</h1>
+      <div>
+        <h1>MSX</h1>
+        <p>Have a look at msxPage.msx and todoPage.msx in the client/pages folder</p>
+      </div>
     )
   }
 };
