@@ -1,0 +1,1 @@
+myApp = typeof(myApp)!='undefined'? myApp : {};

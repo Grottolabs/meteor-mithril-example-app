@@ -1,0 +1,13 @@
+/**
+ * Created by jakob on 16-09-2015.
+ */
+myApp.msxPage = {
+  controller: function(){
+
+  },
+  view: function(ctrl) {
+    return myApp.layout(
+      <h1>MSX</h1>
+    )
+  }
+};

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="meteor-packages-auto-import-browser" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fourseven_scss/3.2.0/web.browser/packages/fourseven_scss.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/cosmos_browserify/0.4.0/web.browser/packages/cosmos_browserify.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fourseven_scss/3.2.0/web.browser/packages/fourseven_scss.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/cosmos_browserify/0.4.0/web.browser/packages/cosmos_browserify.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

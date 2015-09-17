@@ -1,0 +1,72 @@
+/**
+ * Created by jakob on 16-09-2015.
+ */
+
+myApp.todoPage = {
+  vm: {
+    taskName: m.prop(''),
+    toggle     : function (e) {
+      e.preventDefault();
+      Meteor.call('tasks/toggleDone', this._id);
+    },
+    toggleHide : function (e) {
+      e.preventDefault();
+      this.hideCompletedTasks = !this.hideCompletedTasks;
+      m.redraw.strategy("all");
+    },
+    filterTasks: function () {
+      var self = this;
+      return this.tasks.filter(function (task) {
+        return !task.done || !self.hideCompletedTasks
+      });
+    },
+    addTask    : function (e) {
+      var name = myApp.todoPage.vm.taskName;
+      e.preventDefault();
+      Meteor.call('tasks/insert', name());
+      name('')
+    },
+    deleteTask: function(e){
+      Meteor.call('tasks/remove', this._id);
+    }
+  },
+
+  controller: (function () {
+    this.hideCompletedTasks = false;
+    m.autoRedraw(this, function () {
+      this.tasks = Tasks.find().fetch();
+    })
+  }),
+
+
+  view(ctrl) {
+    var vm = myApp.todoPage.vm;
+    return myApp.layout(
+      <div class="container">
+        <header>
+          <h1>Todos</h1>
+          <label class="hide-completed">
+            <input id="cb" type="checkbox" checked={!!ctrl.hideCompletedTasks} onclick={vm.toggleHide.bind(ctrl)}/>
+            Hide Completed Tasks
+
+          </label>
+        </header>
+        <ul class="todolist">
+          {vm.filterTasks.bind(ctrl)().map(task =>
+            <li class={task.done? 'checked':''}>
+              <input type="checkbox" name="done" checked={!!task.done} onclick={vm.toggle.bind(task)}/>
+              <span class="text">{task.title}</span>
+              <span class="close" onclick={vm.deleteTask.bind(task)}> </span>
+            </li>)}
+        </ul>
+        <label for="addtask">Add new task</label>
+        <form onsubmit={vm.addTask}>
+          <input type="text" oninput={m.withAttr('value', vm.taskName)} value={vm.taskName()} />
+          <input type="submit"/>
+        </form>
+
+      </div>
+    )
+  }
+};
+

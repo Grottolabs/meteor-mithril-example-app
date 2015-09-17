@@ -1,0 +1,18 @@
+
+.px {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.py {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+@mixin px($em){
+  padding-left: #{$em}em;
+  padding-right: #{$em}em;
+}
+@mixin py($em){
+  padding-top: #{$em}em;
+  padding-bottom: #{$em}em;
+}

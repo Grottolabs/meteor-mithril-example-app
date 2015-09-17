@@ -1,0 +1,66 @@
+@import "Skeleton-2.0.4/css/normalize";
+@import "Skeleton-2.0.4/css/skeleton";
+@import "helpers";
+
+li {
+  list-style: none;
+}
+
+.navbar {
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  @include px(2);
+}
+
+.navbar-item {
+  float: left;
+  padding: 0.5em 0.5em 0 0.5em;
+  font-size: 1.2em;
+  & > a {
+    text-decoration: none;
+  }
+
+  &.active {
+    border-bottom: 1px solid #1EAEDB;
+  }
+}
+
+main {
+  @include px(2)
+}
+
+@keyframes fadein {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.helloName {
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+.todolist {
+  li.checked {
+    opacity: 0.6;
+    .text {
+      text-decoration: line-through;
+    }
+  }
+  & .text {
+    padding-left: 0.5em;
+  }
+}
+
+.close {
+  margin-left: 0.5em;
+  &:after {
+    content: '×';
+  }
+  &:hover {
+    cursor: pointer
+  }
+}
